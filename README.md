@@ -1,7 +1,14 @@
 ## Hello and welcome
 
-À toi Lina et Juanny de nous impressionner par votre doc ! 
+À toi Lina et Juanny de nous impressionner par votre doc !
+
 ## Folder Structure
+
+Pour lancer le projet, il suffit lancer le script `run.sh`.
+
+```bash
+sh run.sh
+```
 
 The workspace contains two folders by default, where:
 
