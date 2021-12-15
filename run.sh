@@ -1,0 +1,6 @@
+echo Compiling from scratch...
+rm -r ./bin/*
+find . -type f -name *.java -exec javac -cp "./src" {} -d ./bin \;
+echo Running ...
+echo --------------------------------------------------
+java -cp ./bin Main
