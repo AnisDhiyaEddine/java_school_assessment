@@ -17,3 +17,4 @@ public class President extends Personne {
         while(true){}
     }
 }
+

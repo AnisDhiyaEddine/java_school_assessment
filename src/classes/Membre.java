@@ -6,7 +6,7 @@ public class Membre extends Personne {
     }
 
     void effectuerUneVisite(){}
-    void voterSurUneArbre(){}
+    void voterSurUnArbre(){}
     void cotiser(){}
     void effectuerUnCompteRendu(){}
 
