@@ -1,8 +1,6 @@
 import utiles.*;
-
+import classes.*;
 import java.io.File;
-
-import classes.*;	
 public class Main {
 
     static private String arbresURL = "https://data.iledefrance.fr//explore/dataset/les-arbres/download?format=csv&timezone=Europe/Berlin&use_labels_for_header=false";
@@ -18,16 +16,12 @@ public class Main {
         } else {
             FsHandler.downloadFile(arbresURL, "assets/arbres.csv");
         }
-        
-        IOHandler.ecrire(FsHandler.readFile("assets/arbres.csv"));
-    }
-}
 
+        Association association = new Association();
+        association.remplirLesArbres();
 
-/*
-System.out.println("-> Si vous Etes un membre tapez 1 \n-> Si vous etes le president tapez 2 \n-> Pour quitter tapez 0");	
+        System.out.println("-> Si vous Etes un membre tapez 1 \n-> Si vous etes le president tapez 2 \n-> Pour quitter tapez 0");	
         int role =  Integer.parseInt(IOHandler.lireClavier("Tapez un chiffre ") ); 
-        
         switch (role) {
             case 1:
                 Membre.main(args);
@@ -40,4 +34,5 @@ System.out.println("-> Si vous Etes un membre tapez 1 \n-> Si vous etes le presi
         }
         int i = 0;
         while(true){}
-*/
+    }
+}
