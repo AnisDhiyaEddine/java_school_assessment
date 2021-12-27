@@ -1,32 +1,71 @@
 package classes;
 
 import java.util.Vector;
-
-import utiles.FsHandler;
+import utiles.*;
 
 public class Association {
+    private String nom;
     private President president;
-    private Membre[] membres;
+    private Vector<Membre> membres = new Vector<Membre>();
+    private Vector<Personne> donateurs = new Vector<Personne>();
     private Vector<Arbre> arbres = new Vector<Arbre>();
     private double comptes;
 
 
-    void genererUnRapport(){}
-    void recevoirUnCompteRendu(){}
-    void payerLesFactures(){}
-    void demanderDesDons(){}
-    void receverDesCotisations(){}
-    static void mettreÀjourLesArbres(){
-        // TODO - pour gérer les mises à jour des fichier de données
+    public Association(String nom){
+        this.nom = nom;
     }
-    void proposerDesVisites(){}
-    void proposerUneListedesArbres(){}
-    void authentifierUnMembre(){
-        // TODO renvoie les informations du membre
-    }
-    void supprimmerUnMembre(){}
-    void payerLesMembres(){}
 
+    public President getPresident(){
+        return president;
+    }
+
+    public void setPresident(President president){
+        this.president = president;
+    }
+
+    public Vector<Membre> getMembres(){
+        return membres;
+    }
+
+    public void setMembres(Vector<Membre> membres){
+        this.membres = membres;
+    }
+
+    public Vector<Personne> getDonateurs(){
+        return donateurs;
+    }
+
+    public void setDonateurs(Vector<Personne> donateurs){
+        this.donateurs = donateurs;
+    }
+
+    public Vector<Arbre> getArbres(){
+        return arbres;
+    }
+
+    public void setArbres(Vector<Arbre> arbres){
+        this.arbres = arbres;
+    }
+
+    public double getComptes(){
+        return comptes;
+    }
+
+    public void setComptes(double comptes){
+        this.comptes = comptes;
+    }
+
+
+    public void genererUnRapport(){}
+    public void recevoirUnCompteRendu(){}
+    public void payerLesFactures(){}
+    public void demanderDesDons(){}
+    public void receverDesCotisations(){}
+    public void proposerDesVisites(){}
+    public void proposerUneListedesArbres(){}
+    public void authentifierUnMembre(){}
+    public void payerLesMembres(){}
 
     public void remplirLesArbres(){
         String liste = FsHandler.readFile("assets/arbres.csv");
@@ -43,9 +82,8 @@ public class Association {
         }
     }	
 
-
-    public static void main(String[] args) {
-        System.out.println("association handler is being executed");
-        while(true){}
+    @Override
+    public String toString() {
+        return "nom association: " + this.nom + " President " + this.getPresident() + " nombre des membres " + this.getMembres().size() +  " -- testing purposes";
     }
 }
