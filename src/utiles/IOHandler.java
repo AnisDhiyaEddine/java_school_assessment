@@ -11,7 +11,7 @@ public class IOHandler {
             new BufferedReader(new InputStreamReader(System.in));
             return clavier.readLine();
         } catch (Exception e) {
-            return "erreur dans fonction lireClavier";
+            return "erreur dans la fonction lireClavier";
         }
     }
 

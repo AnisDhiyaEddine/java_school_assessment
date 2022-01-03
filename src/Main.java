@@ -22,7 +22,8 @@ public class Main {
         Association association = new Association("Asso arbres");
         association.remplirLesArbres();
         System.out.println("Nombre d'arbres : " + association.getArbres().size());
-
+        System.out.println("Nombre d'arbres remarquables : " + association.getArbresRemarquables().size());
+        
         int role = Integer.parseInt(IOHandler.lireClavier("Veuillez choisir votre rôle : \n1. President \n2. Membre \n3. Association \n4. Quitter"));
         switch(role){
             case 1: {

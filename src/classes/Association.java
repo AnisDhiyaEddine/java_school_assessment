@@ -1,6 +1,11 @@
 package classes;
 
-import java.util.Vector;
+import java.sql.Timestamp;  
+import java.text.*;
+
+
+
+import java.util.*;
 import utiles.*;
 
 public class Association {
@@ -9,6 +14,7 @@ public class Association {
     private Vector<Membre> membres = new Vector<Membre>();
     private Vector<Personne> donateurs = new Vector<Personne>();
     private Vector<Arbre> arbres = new Vector<Arbre>();
+    private Vector<Arbre> arbresRemarquables = new Vector<Arbre>();
     private double comptes;
 
 
@@ -56,13 +62,30 @@ public class Association {
         this.comptes = comptes;
     }
 
+    public Vector<Arbre> getArbresRemarquables(){
+        return arbresRemarquables;
+    }
+
 
     public void genererUnRapport(){}
     public void recevoirUnCompteRendu(){}
     public void payerLesFactures(){}
     public void demanderDesDons(){}
     public void receverDesCotisations(){}
-    public void proposerDesVisites(){}
+
+
+
+    public void proposerDesVisites(){
+        Collections.sort(arbresRemarquables, new Comparator<Arbre>() {
+            @Override
+            public int compare(Arbre o1, Arbre o2) {
+                return o1.get_derniereVisite().compareTo(o2.get_derniereVisite());
+            }
+        });
+    }
+
+
+
     public void proposerUneListedesArbres(){}
     public void authentifierUnMembre(){}
     public void payerLesMembres(){}
@@ -74,9 +97,16 @@ public class Association {
         try {
             for (int i = 1; i < arbresLignes.length; i++) {
             String[] arbresColonnes = arbresLignes[i].split(";");
-            arbre = new Arbre(Integer.parseInt(arbresColonnes[0]), arbresColonnes[3],arbresColonnes[6],arbresColonnes[8],arbresColonnes[9],arbresColonnes[10],arbresColonnes[15]);
+            arbre = new Arbre(arbresColonnes[8], arbresColonnes[9],arbresColonnes[10], arbresColonnes[15], arbresColonnes[13], arbresColonnes[12], arbresColonnes[14],arbresColonnes[15]);
             if(arbre != null) this.arbres.add(arbre);
          }
+
+         for(Arbre el : arbres){
+            if(! el.get_remarquable().equals("NON")){	
+                arbresRemarquables.add(el);
+            }
+         }
+
         } catch (Exception e) {
             System.out.println("Erreur lors de la création des arbres");
         }
@@ -84,6 +114,61 @@ public class Association {
 
     @Override
     public String toString() {
-        return "nom association: " + this.nom + " President " + this.getPresident() + " nombre des membres " + this.getMembres().size() +  " -- testing purposes";
+        return "Association{" +
+                "nom='" + nom + '\'' +
+                ", nombre des arbres=" + arbres.size() +
+                '}';
     }
 }
+
+
+
+
+
+
+
+/*
+
+         Vector<Arbre> arbresTries = new Vector<Arbre>();
+
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            Date date = dateFormat.parse("23/09/2007");
+            long time = date.getTime();
+        
+            arbres.get(0).set_derniereVisite(new Timestamp(time));
+            arbresTries.add(arbres.get(0));
+
+            date = dateFormat.parse("03/09/2007");
+            time = date.getTime();
+
+            arbres.get(1).set_derniereVisite(new Timestamp(time));
+            arbresTries.add(arbres.get(1));
+
+            date = dateFormat.parse("12/09/2007");
+            time = date.getTime();
+
+            arbres.get(2).set_derniereVisite(new Timestamp(time));
+            arbresTries.add(arbres.get(2));
+
+            date = dateFormat.parse("07/09/2007");
+            time = date.getTime();
+
+            arbres.get(3).set_derniereVisite(new Timestamp(time));
+            arbresTries.add(arbres.get(3));
+
+            date = dateFormat.parse("19/09/2007");
+            time = date.getTime();
+            arbres.get(4).set_derniereVisite(new Timestamp(time));
+            arbresTries.add(arbres.get(4));
+
+            // Afficher les arbres triés
+            for(int i = 0; i < arbresTries.size(); i++){
+                System.out.println(arbresTries.get(i).toString());
+            }
+
+            System.out.println("\n\n");
+                        // Afficher les arbres triés
+                        for(int i = 0; i < arbresTries.size(); i++){
+                            System.out.println(arbresTries.get(i).toString());
+                        }
+*/
