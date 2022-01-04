@@ -1,6 +1,6 @@
 package classes;
 import java.util.Vector;
-
+import utiles.IOHandler;
 import utiles.*;
 
 public class President extends Personne {
@@ -9,8 +9,8 @@ public class President extends Personne {
         super(nom, prenom, adresse, telephone, email);
     }
 
-    public void ajouterUnDonnateur(String nom, String prenom, String adresse, String telephone, String email, Vector<Personne> donateurs) {
-        Personne donateur = new Personne(nom, prenom, adresse, telephone, email);
+    public void ajouterUnDonnateur(String nature, String nom, Vector<Donateur> donateurs) {
+        Donateur donateur = new Donateur(nature, nom);
         donateurs.add(donateur);
     }
 
@@ -21,23 +21,28 @@ public class President extends Personne {
 
     public void virerUnMembre(String nom, String prenom, Vector<Membre> membres){
         for(Membre m : membres){
-            if(m.getNom().equals(nom) && m.getPrenom().equals(prenom)){
+            if(m.getNom().equals(nom) && m.getPrenom().equals(prenom) && (m.getCotisation().size() > 0)){
                 membres.remove(m);
-                System.out.println("Le membre a été virer avec succès.");
+                System.out.println("Le membre a été viré avec succès.");
                 return;
             }
         }
-        System.out.println("Le membre n'a pas été trouvé.");
+        System.out.println("Le membre n'a pas été trouvé ou a déja cotisé.");
     }
 
-    public void supprimerUnDonnateur(String nom, String prenom, Vector<Personne> donateurs){
-        for(Personne p : donateurs){
-            if(p.getNom().equals(nom) && p.getPrenom().equals(prenom)){
+    public void supprimerUnDonnateur(String nature, String nom, Vector<Donateur> donateurs){
+        for(Donateur p : donateurs){
+            if(p.getNom().equals(nom) && p.getNature().equals(nature)){
                 donateurs.remove(p);
                 System.out.println("Le donnateur a été supprimer avec succès.");
                 return;
             }
         }
         System.out.println("Le donnateur n'a pas été trouvé.");
+    }
+
+    public void nouvelleFacture(Association association){
+        double montant = Double.parseDouble(IOHandler.lireClavier("Entrez le montant de la facture"));
+        association.setFactures(association.getFactures() + montant);
     }
 }

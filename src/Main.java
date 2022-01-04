@@ -38,11 +38,8 @@ public class Main {
                 switch(choix){
                     case 1: {
                         String nomDonateur = IOHandler.lireClavier("Veuillez entrer le nom du donnateur : ");
-                        String prenomDonateur = IOHandler.lireClavier("Veuillez entrer le prénom du donnateur : ");
-                        String adresseDonateur = IOHandler.lireClavier("Veuillez entrer l'adresse du donnateur : ");
-                        String telephoneDonateur = IOHandler.lireClavier("Veuillez entrer le numéro de téléphone du donnateur : ");
-                        String emailDonateur = IOHandler.lireClavier("Veuillez entrer l'email du donnateur : ");
-                        association.getPresident().ajouterUnDonnateur(nomDonateur, prenomDonateur, adresseDonateur, telephoneDonateur, emailDonateur, association.getDonateurs());
+                        String nature = IOHandler.lireClavier("Veuillez entrer la nature du donnateur : ");
+                        association.getPresident().ajouterUnDonnateur(nature,nomDonateur, association.getDonateurs());
                         break;
                     }
                     case 2: {
@@ -76,10 +73,9 @@ public class Main {
             case 2: {
                 break;
             }
-
             case 3: {
                 System.out.println("Bienvenue dans les fonctions de l'association");
-                System.out.println("Veuillez choisir une action : \n1. Générer un rapport \n2. Recevoir un compte rendu \n3. Payer les factures \n4. Proposer des dons \n5.Recevoir des cotisations \n6. Proposer des visites \n7. Proposer une liste des arbres \n8. Authentifier un membre \n9. Payer les membres \n10. Quitter");
+                System.out.println("Veuillez choisir une action : \n1. Générer un rapport \n2. Payer les factures \n3. Proposer des dons \n4.Recevoir des cotisations \n5. Proposer des visites \n6. Proposer une liste des arbres \n7. Authentifier un membre \n8. Payer les membres \n9. Quitter");
                 int choix = Integer.parseInt(IOHandler.lireClavier("Veuillez entrer votre choix : "));
                 switch(choix){
                     case 1: {
@@ -87,38 +83,23 @@ public class Main {
                         break;
                     }
                     case 2: {
-                        association.recevoirUnCompteRendu();
-                        break;
-                    }
-                    case 3: {
                         association.payerLesFactures();
                         break;
                     }
-                    case 4: {
+                    case 3: {
                         association.demanderDesDons();
                         break;
                     }
                     case 5: {
-                        association.receverDesCotisations();
-                        break;
-                    }
-                    case 6: {
                         association.proposerDesVisites();
                         break;
                     }
-                    case 7: {
+                    case 6: {
                         association.proposerUneListedesArbres();
                         break;
                     }
-                    case 8: {
-                        association.authentifierUnMembre();
-                        break;
-                    }
+    
                     case 9: {
-                        association.payerLesMembres();
-                        break;
-                    }
-                    case 10: {
                         System.out.println("Au revoir");
                         break;
                     }

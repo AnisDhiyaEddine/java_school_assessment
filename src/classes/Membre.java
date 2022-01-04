@@ -1,6 +1,6 @@
 package classes;
 import java.sql.Timestamp;  
-
+import utiles.IOHandler;
 import java.util.Vector;
 
 public class Membre extends Personne {
@@ -9,15 +9,15 @@ public class Membre extends Personne {
     }
 
     private int nombreDeVotes = 5;
-    private int montant_cotisé = 0;
+    private Vector<Double> cotisations = new Vector<Double>();
 
-    public int get_montant_cotisé(){
-        return montant_cotisé;
-    }
-    public void set_montant_cotisé(int montant){
-        this.montant_cotisé = montant;
+    public Vector<Double> getCotisation() {
+        return cotisations;
     }
 
+    public void setCotisation(Vector<Double> cotisation) {
+        this.cotisations = cotisation;
+    }
 
     void programmerUneVisite(String libellefrancais, String genre, String espece, String stadedeveloppement, Vector<Arbre> arbresProposés) {
         for(Arbre arbre : arbresProposés) {
@@ -41,27 +41,55 @@ public class Membre extends Personne {
             for(Arbre arbre : tousArbres) {
                 if(arbre.get_libellefrancais().equals(libellefrancais)) {
                     arbresVotés.add(arbre);
+                    arbre.set_nombreDeVotes(arbre.get_nombreDeVotes() + 1);
                 }
             }
         }
     }
 
-    void effectuerUnCompteRendu(String libellefrancais, String genre, String espece, String stadedeveloppement, Vector<Arbre> arbresProposés) {
+    void effectuerUnCompteRendu(String libellefrancais, String genre, String espece, String stadedeveloppement, Vector<Arbre> arbresProposés, Association association) {
         for(Arbre arbre : arbresProposés) {
             if(arbre.get_libellefrancais().equals(libellefrancais) && arbre.get_genre().equals(genre) && arbre.get_espece().equals(espece) && arbre.get_stadedeveloppement().equals(stadedeveloppement)) {
-                if(arbre.get_visite_programmée() == true ) {
+                if(arbre.get_visite_programmée() == true && association.getComptes() > association.get_montant_visite() ) {
                     arbre.set_visite_programmée(false);
                     arbre.set_derniereVisite(new Timestamp(System.currentTimeMillis()));
+                    association.setComptes(association.getComptes() - association.get_montant_visite());
+                    String compteRendu = IOHandler.lireClavier("Veuillez entrer votre compte rendu");
+                    compteRendu = compteRendu + "\nDate: " + new Timestamp(System.currentTimeMillis());
+                    association.getCompteRendus().add(compteRendu);
                 }
                 else {
-                    System.out.println("Oops cet arbre n'a pas été réservé pour une visite");
+                    System.out.println("Oops vous ne pouvez pas effectuer de compte rendu");
                 }
             }
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println("member handler is being executed");
-        while(true){}
+    void cotiser(Association association) {
+       double montant = Double.parseDouble(IOHandler.lireClavier("Veuillez entrer le montant de votre cotisation"));
+         if(montant > 0) {
+                association.setComptes(association.getComptes() + montant);
+                this.cotisations.add(montant);
+         }
+         else {
+              System.out.println("Veuillez entrer un montant valide");
+         }
+    }
+
+    void authentification(){
+      System.out.println(toString());
+    }
+
+    @Override
+    public String toString() {
+        return " Membre{" +
+                "nom=" + this.getNom() +
+                ", prenom=" + this.getPrenom() +
+                ", adresse=" + this.getAdresse() +
+                ", telephone=" + this.getTelephone() +
+                ", email=" + this.getEmail() +
+                ", nombreDeVotes=" + nombreDeVotes +
+                ", cotisations=" + cotisations.toString() +
+                '}';
     }
 }
