@@ -9,7 +9,7 @@ public class President extends Personne {
         super(nom, prenom, adresse, telephone, email);
     }
 
-    public void ajouterUnDonnateur(String nature, String nom, Vector<Donateur> donateurs) {
+    public void ajouterUnDonateur(String nature, String nom, Vector<Donateur> donateurs) {
         Donateur donateur = new Donateur(nature, nom);
         donateurs.add(donateur);
     }
@@ -19,9 +19,9 @@ public class President extends Personne {
         membres.add(membre);
     }
 
-    public void virerUnMembre(String nom, String prenom, Vector<Membre> membres){
+    public void radierUnMembre(String nom, String prenom, Vector<Membre> membres){
         for(Membre m : membres){
-            if(m.getNom().equals(nom) && m.getPrenom().equals(prenom) && (m.getCotisation().size() > 0)){
+            if(m.getNom().equals(nom) && m.getPrenom().equals(prenom) && (m.getCotisation().size() == 0)){
                 membres.remove(m);
                 System.out.println("Le membre a été viré avec succès.");
                 return;
@@ -30,15 +30,15 @@ public class President extends Personne {
         System.out.println("Le membre n'a pas été trouvé ou a déja cotisé.");
     }
 
-    public void supprimerUnDonnateur(String nature, String nom, Vector<Donateur> donateurs){
+    public void supprimerUnDonateur(String nature, String nom, Vector<Donateur> donateurs){
         for(Donateur p : donateurs){
             if(p.getNom().equals(nom) && p.getNature().equals(nature)){
                 donateurs.remove(p);
-                System.out.println("Le donnateur a été supprimer avec succès.");
+                System.out.println("Le donateur a été supprimer avec succès.");
                 return;
             }
         }
-        System.out.println("Le donnateur n'a pas été trouvé.");
+        System.out.println("Le donateur n'a pas été trouvé.");
     }
 
     public void nouvelleFacture(Association association){

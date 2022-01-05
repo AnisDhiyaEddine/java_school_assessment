@@ -16,10 +16,13 @@ public class Association {
     private Vector<Arbre> arbres = new Vector<Arbre>();
     private Vector<Arbre> arbresRemarquables = new Vector<Arbre>();
     private double comptes;
-    private double montant_visite = 100;
+    private double montantVisite = 100;
     private Vector <String> compteRendus = new Vector<String>();
     private double factures = 0;
     private Vector<Arbre> arbresVotés = new Vector<Arbre>();
+    private double recettes = 0;
+    private double depenses = 0;
+    private int nombreDesVisites = 0;
 
 
     public Association(String nom){
@@ -74,16 +77,32 @@ public class Association {
         this.factures = factures;
     }
 
+    public void set_recettes(double recettes){
+        this.recettes = recettes;
+    }
+
+    public double get_recettes(){
+        return recettes;
+    }
+
+    public void set_depenses(double depenses){
+        this.depenses = depenses;
+    }
+
+    public double get_depenses(){
+        return depenses;
+    }
+
     public Vector<Arbre> getArbresRemarquables(){
         return arbresRemarquables;
     }
 
-    public void set_montant_visite(double montant_visite){
-        this.montant_visite = montant_visite;
+    public void set_montantVisite(double montantVisite){
+        this.montantVisite = montantVisite;
     }
 
-    public double get_montant_visite(){
-        return montant_visite;
+    public double get_montantVisite(){
+        return montantVisite;
     }
 
     public Vector<String> getCompteRendus(){
@@ -94,22 +113,42 @@ public class Association {
         this.compteRendus = compteRendus;
     }
 
+    public void setNombreVisites(int nombreDesVisites){
+        this.nombreDesVisites = nombreDesVisites;
+    }
+
+    public int getNombreVisites(){
+        return nombreDesVisites;
+    }
+
+    public Vector<Arbre> getArbresVotés(){
+        return arbresVotés;
+    }
+
+    public void setArbresVotés(Vector<Arbre> arbresVotés){
+        this.arbresVotés = arbresVotés;
+    }
+
     public void payerLesFactures(){
         if (comptes >= factures){
             comptes -= factures;
+            depenses += factures;
             factures = 0;
+            System.out.println("Paiement effectué");
         }else{
             System.out.println("Vous n'avez pas assez d'argent pour payer les factures");	
         }
     }
 
-    public void proposerDesVisites(){
+    // Proposer des visites aux membres	
+    public Vector<Arbre> proposerDesVisites(){
         Collections.sort(arbresRemarquables, new Comparator<Arbre>() {
             @Override
             public int compare(Arbre o1, Arbre o2) {
                 return o1.get_derniereVisite().compareTo(o2.get_derniereVisite());
             }
         });
+        return arbresRemarquables;
     }
 
 
@@ -138,14 +177,21 @@ public class Association {
 
 
 
-    public void genererUnRapport(){
-        
+    public String genererUnRapport(){
+        String rapport = " Rapport de l'association " + this.nom + 
+        " recettes : " + this.recettes + 
+        " depenses : " + this.depenses + 
+        " comptes : " + this.comptes + 
+        " montant des visites : " + this.montantVisite + 
+        " le nmbre des visite effectuées : " + this.nombreDesVisites;
+        return rapport;
     }
 
     public void demanderDesDons( double montant, String nature, String nom){
         for(Donateur donateur : donateurs){
             if(donateur.getNature().equals(nature) && donateur.getNom().equals(nom)){
                 donateur.donner(montant, this);
+                recettes += montant;
             }
         }
     }
