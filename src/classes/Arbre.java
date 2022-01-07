@@ -93,22 +93,22 @@ public class Arbre {
 
     @Override
     public String toString() {
-        return "Arbre{" +
-            "libellefrancais='" + libellefrancais + '\'' +
-            ", genre='" + genre + '\'' +
-            ", espece='" + espece + '\'' +
-            ", remarquable='" + remarquable + '\'' +
-            ", hauteurenm='" + hauteurenm + '\'' +
-            ", circonferenceencm='" + circonferenceencm + '\'' +
-            ", stadedeveloppement='" + stadedeveloppement + '\'' +
-            ", geo_point_2d='" + geo_point_2d + '\'' +
-            ", derniereVisite=" + derniereVisite +
-            '}';
+        return "\n\nArbre {\n" +
+            "libellefrancais: " + libellefrancais + '\n' +
+            "genre: " + genre + '\n' +
+            "espece: " + espece + '\n' +
+            "remarquable: " + remarquable + '\n' +
+            "hauteurenm: " + hauteurenm + '\n' +
+            "circonferenceencm: " + circonferenceencm + '\n' +
+            "stadedeveloppement: " + stadedeveloppement + '\n' +
+            "geo_point_2d: " + geo_point_2d + '\n' +	
+            "nombreDeVotes: " + nombreDeVotes + '\n' +	
+            "visite programmée: " + visite_programmée + '\n' +
+            "\n}";
     }
 
     @Override
     public int hashCode() {
-        // il existe plusieurs façons (Pattern) pour générer un hashCode, nous avons utilisé la méthode du Joshua bloch mentionné dans son livre "Effective Java"
         final int prime = 31;
         int result = 1;
         result = prime * result + ((circonferenceencm == null) ? 0 : circonferenceencm.hashCode());

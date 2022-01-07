@@ -15,11 +15,11 @@ public class Association {
     private Vector<Donateur> donateurs = new Vector<Donateur>();
     private Vector<Arbre> arbres = new Vector<Arbre>();
     private Vector<Arbre> arbresRemarquables = new Vector<Arbre>();
+    private Vector<Arbre> arbresVotés = new Vector<Arbre>();
+    private Vector <String> compteRendus = new Vector<String>();
     private double comptes;
     private double montantVisite = 100;
-    private Vector <String> compteRendus = new Vector<String>();
     private double factures = 0;
-    private Vector<Arbre> arbresVotés = new Vector<Arbre>();
     private double recettes = 0;
     private double depenses = 0;
     private int nombreDesVisites = 0;
@@ -105,7 +105,7 @@ public class Association {
         return montantVisite;
     }
 
-    public Vector<String> getCompteRendus(){
+    public Vector<String> getComptesRendus(){
         return compteRendus;
     }
 
@@ -129,6 +129,7 @@ public class Association {
         this.arbresVotés = arbresVotés;
     }
 
+
     public void payerLesFactures(){
         if (comptes >= factures){
             comptes -= factures;
@@ -145,6 +146,13 @@ public class Association {
         Collections.sort(arbresRemarquables, new Comparator<Arbre>() {
             @Override
             public int compare(Arbre o1, Arbre o2) {
+                if(o1.get_derniereVisite() == null){
+                    return -1;
+                }
+
+                if(o2.get_derniereVisite() == null){
+                    return 1;
+                }
                 return o1.get_derniereVisite().compareTo(o2.get_derniereVisite());
             }
         });
@@ -160,7 +168,7 @@ public class Association {
         try {
             for (int i = 1; i < arbresLignes.length; i++) {
             String[] arbresColonnes = arbresLignes[i].split(";");
-            arbre = new Arbre(arbresColonnes[8], arbresColonnes[9],arbresColonnes[10], arbresColonnes[15], arbresColonnes[13], arbresColonnes[12], arbresColonnes[14],arbresColonnes[15]);
+            arbre = new Arbre(arbresColonnes[8], arbresColonnes[9],arbresColonnes[10], arbresColonnes[15], arbresColonnes[13], arbresColonnes[12], arbresColonnes[14],arbresColonnes[16]);
             if(arbre != null) this.arbres.add(arbre);
          }
 
@@ -178,27 +186,39 @@ public class Association {
 
 
     public String genererUnRapport(){
-        String rapport = " Rapport de l'association " + this.nom + 
+        String rapport = "\n Rapport de l'association " + this.nom + 
         " recettes : " + this.recettes + 
-        " depenses : " + this.depenses + 
-        " comptes : " + this.comptes + 
-        " montant des visites : " + this.montantVisite + 
-        " le nmbre des visite effectuées : " + this.nombreDesVisites;
+        " euros, depenses : " + this.depenses + 
+        " euros, comptes : " + this.comptes + 
+        " euros, montant des visites : " + this.montantVisite + 
+        " euros, le nmbre des visite effectuées : " + this.nombreDesVisites + "\n";
         return rapport;
     }
 
     public void demanderDesDons( double montant, String nature, String nom){
-        for(Donateur donateur : donateurs){
-            if(donateur.getNature().equals(nature) && donateur.getNom().equals(nom)){
+
+        if(nature == "" && nom == "") {
+            // Vu qu'on a pas encore rajouter la persistance des données, on crée un donateur temporaire
+            donateurs.add(new Donateur("test", "test"));
+            demanderDesDons(montant, "test", "test");
+            donateurs.remove(donateurs.size()-1);
+        }
+
+        if(donateurs.size() == 0){
+            System.out.println("Il n'y a pas de donateurs");
+        }else{
+            for(Donateur donateur : donateurs){
+                if(donateur.getNature().equals(nature) && donateur.getNom().equals(nom)){
                 donateur.donner(montant, this);
                 recettes += montant;
+                }
             }
         }
     }
 
     public void proposerUneListedesArbres(){
         Vector<Arbre> aProposer = new Vector<Arbre>();
-        Collections.sort(arbresRemarquables, new Comparator<Arbre>() {
+        Collections.sort(arbresVotés, new Comparator<Arbre>() {
             @Override
             public int compare(Arbre o1, Arbre o2) {
                 return o1.get_nombreDeVotes() - o2.get_nombreDeVotes();
@@ -206,7 +226,7 @@ public class Association {
         });
 
         for(int i = 0; i < 5; i++){
-                aProposer.add(arbresRemarquables.get(i));
+                aProposer.add(arbresVotés.get(i));
         }
 
         System.out.println("Voici les arbres à proposer à la municipalité : ");
@@ -215,6 +235,28 @@ public class Association {
         }
     }
 
+    public void testProposerUneListedesArbres(){
+        setPresident( new President("test", "test", "test", "test", "test"));
+       president.ajouterUnMembre("test1", "test1", "test1", "test1", "test1", membres);
+       president.ajouterUnMembre("test2", "test2", "test2", "test2", "test2", membres);
+       president.ajouterUnMembre("test3", "test3", "test3", "test3", "test3", membres);
+    
+        membres.get(0).voterSurUnArbre(arbres, arbresVotés, "Tilleul", "48.8575236733368,2.273512784480306");
+        membres.get(0).voterSurUnArbre(arbres, arbresVotés, "Platane", "48.847974826347695,2.391709735925394");
+        membres.get(0).voterSurUnArbre(arbres, arbresVotés, "Charme", "48.85212056146794,2.412624900479169");
+        membres.get(0).voterSurUnArbre(arbres, arbresVotés, "Sophora", "48.87009602025182,2.395182637194809");
+
+        membres.get(1).voterSurUnArbre(arbres, arbresVotés, "Tilleul", "48.8575236733368,2.273512784480306");
+        membres.get(1).voterSurUnArbre(arbres, arbresVotés, "Platane", "48.847974826347695,2.391709735925394");
+        membres.get(1).voterSurUnArbre(arbres, arbresVotés, "Charme", "48.85212056146794,2.412624900479169");
+        membres.get(1).voterSurUnArbre(arbres, arbresVotés, "Sophora", "48.87009602025182,2.395182637194809");
+
+        membres.get(2).voterSurUnArbre(arbres, arbresVotés, "Tilleul", "48.8575236733368,2.273512784480306");
+        membres.get(2).voterSurUnArbre(arbres, arbresVotés, "Platane", "48.847974826347695,2.391709735925394");
+        membres.get(2).voterSurUnArbre(arbres, arbresVotés, "Charme", "48.85212056146794,2.412624900479169");
+        membres.get(2).voterSurUnArbre(arbres, arbresVotés, "Sophora", "48.87009602025182,2.395182637194809");
+        proposerUneListedesArbres();
+    }
 
     @Override
     public String toString() {
@@ -224,55 +266,3 @@ public class Association {
                 '}';
     }
 }
-
-
-
-
-
-
-
-/*
-
-         Vector<Arbre> arbresTries = new Vector<Arbre>();
-
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            Date date = dateFormat.parse("23/09/2007");
-            long time = date.getTime();
-        
-            arbres.get(0).set_derniereVisite(new Timestamp(time));
-            arbresTries.add(arbres.get(0));
-
-            date = dateFormat.parse("03/09/2007");
-            time = date.getTime();
-
-            arbres.get(1).set_derniereVisite(new Timestamp(time));
-            arbresTries.add(arbres.get(1));
-
-            date = dateFormat.parse("12/09/2007");
-            time = date.getTime();
-
-            arbres.get(2).set_derniereVisite(new Timestamp(time));
-            arbresTries.add(arbres.get(2));
-
-            date = dateFormat.parse("07/09/2007");
-            time = date.getTime();
-
-            arbres.get(3).set_derniereVisite(new Timestamp(time));
-            arbresTries.add(arbres.get(3));
-
-            date = dateFormat.parse("19/09/2007");
-            time = date.getTime();
-            arbres.get(4).set_derniereVisite(new Timestamp(time));
-            arbresTries.add(arbres.get(4));
-
-            // Afficher les arbres triés
-            for(int i = 0; i < arbresTries.size(); i++){
-                System.out.println(arbresTries.get(i).toString());
-            }
-
-            System.out.println("\n\n");
-                        // Afficher les arbres triés
-                        for(int i = 0; i < arbresTries.size(); i++){
-                            System.out.println(arbresTries.get(i).toString());
-                        }
-*/

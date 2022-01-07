@@ -22,6 +22,7 @@ public class Main {
         association.remplirLesArbres();
         System.out.println("Nombre d'arbres : " + association.getArbres().size());
         System.out.println("Nombre d'arbres remarquables : " + association.getArbresRemarquables().size());
+        System.out.println("exemple d'arbre pour les tests : " + association.getArbresRemarquables().get(0));
         System.out.println();
         int role = Integer.parseInt(IOHandler.lireClavier("Veuillez choisir votre rôle : \n1. President \n2. Membre \n3. Association \n4. Quitter  "));
         switch(role){
@@ -93,7 +94,7 @@ public class Main {
                 
                 boolean cont = true;
                 while(cont){
-                    int choix = Integer.parseInt(IOHandler.lireClavier("Veuillez choisir une action : \n1. Authentification \n2. Programmer une visite \n3. Faire une cotisation \n4. Voter sur un arbre \n5. Quitter  "));
+                    int choix = Integer.parseInt(IOHandler.lireClavier("Veuillez choisir une action : \n1. Authentification \n2. Programmer une visite \n3. Faire une cotisation \n4. Voter sur un arbre \n5. Effectuer un compte rendu \n6. Quitter  "));
     	            switch(choix){
                         case 1: {
                             membre.authentification();
@@ -101,10 +102,8 @@ public class Main {
                         }
                         case 2: {
                             String libellefrancais = IOHandler.lireClavier("Veuillez entrer le libélé de l'arbre : ");
-                            String genre = IOHandler.lireClavier("Veuillez entrer le genre de l'arbre : ");
-                            String espece = IOHandler.lireClavier("Veuillez entrer l'espèce de l'arbre : ");
-                            String stadedeveloppement = IOHandler.lireClavier("Veuillez entrer le stade de développement de l'arbre : ");
-                            membre.programmerUneVisite(libellefrancais, genre, espece, stadedeveloppement, association.proposerDesVisites());
+                            String point_2d = IOHandler.lireClavier("Veuillez entrer le point 2D de l'arbre : ");
+                            membre.programmerUneVisite(libellefrancais, point_2d , association.proposerDesVisites());
                             // Feedback à l'interieur de la fonction                    
                             break;
                         }
@@ -117,11 +116,20 @@ public class Main {
                         }
                         case 4: {
                             String libelleFrancais = IOHandler.lireClavier("Veuillez entrer le libelle de l'arbre : ");
-                            membre.voterSurUnArbre(association.getArbres(), association.getArbresVotés(), libelleFrancais);
-                            System.out.println("Votre vote a bien été pris en compte");
+                            String point_2d = IOHandler.lireClavier("Veuillez entrer les coordonnées de l'arbre séparé par une vergile sans espace : ");
+                            membre.voterSurUnArbre(association.getArbres(), association.getArbresVotés(), libelleFrancais, point_2d);
+                            System.out.println("Vous avez voté pour l'arbre " + association.getArbresVotés().get(association.getArbresVotés().size()-1));	
                             break;
                         }
                         case 5: {
+                            String libelleFrancais = IOHandler.lireClavier("Veuillez entrer le libelle de l'arbre : ");
+                            String point_2d = IOHandler.lireClavier("Veuillez entrer les coordonnées de l'arbre séparé par une vergule sans espace : ");
+                            membre.testEffectuerUnCompteRendu(libelleFrancais, point_2d, association.proposerDesVisites(), association);
+                            System.out.println("Votre compte rendu a bien été pris en compte");
+                            System.out.println("Le dernier compte rendu est : " + association.getComptesRendus().get(association.getComptesRendus().size()-1));
+                            break;
+                        }
+                        case 6: {
                             cont = false;
                             break;
                         }
@@ -134,10 +142,10 @@ public class Main {
             }
             case 3: {
                 System.out.println("Bienvenue dans les fonctions de l'association");
-                int choix = Integer.parseInt(IOHandler.lireClavier("Veuillez choisir une action : \n1. Générer un rapport \n2. Payer les factures \n3. Proposer des dons \n4.Recevoir des cotisations \n5. Proposer une liste des arbres \n6. Quitter  "));
                 
                 boolean cont = true;
                 while(cont){
+                    int choix = Integer.parseInt(IOHandler.lireClavier("Veuillez choisir une action : \n1. Générer un rapport \n2. Payer les factures \n3. Proposer des dons \n4. Proposer une liste des arbres \n5. Quitter  "));
                     switch(choix){
                         case 1: {
                             System.out.println(association.genererUnRapport());
@@ -153,18 +161,16 @@ public class Main {
                         }
                         case 3: {
                             double montant = Double.parseDouble(IOHandler.lireClavier("Veuillez entrer le montant du don : "));
-                            String nature = IOHandler.lireClavier("Veuillez entrer la nature du doneur : ");
-                            String nomDonateur = IOHandler.lireClavier("Veuillez entrer le nom du donateur : ");
                             System.out.println("Avant la donation les comptes sont à : " + association.getComptes() + " euros");
-                            association.demanderDesDons(montant, nature, nomDonateur);
+                            association.demanderDesDons(montant, "", "");
                             System.out.println("Apres la donation les comptes sont à : " + association.getComptes() + " euros");
                             break;
                         }
-                        case 5: {
-                            association.proposerUneListedesArbres();
+                        case 4: {
+                            association.testProposerUneListedesArbres();
                             break;
                         }
-                        case 6: {
+                        case 5: {
                             System.out.println("Au revoir");
                             cont = false;
                             break;
