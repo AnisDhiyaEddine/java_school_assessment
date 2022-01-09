@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 import java.text.*;
 import java.util.*;
 import utiles.*;
-
 /**
     Cette classe est caractérisée par les attributs suivants :
     nom 
@@ -30,35 +29,29 @@ public class Association {
  */ 
     private String nom;
 /** 
-    President un attribut qui désigne le président de l'association et qui renvoie donc à la classe President
-    @see President 
+    President un attribut qui désigne le président de l'association et qui renvoie donc à la classe President 
  */ 
     private President president;
 /**
     membres est un tableau des membres de l'association
-    @see Membre
  */
     private Vector<Membre> membres = new Vector<Membre>();
 /**
     donateurs est un tableau des donateurs de l'association
-    @see Donateur
  */
     private Vector<Donateur> donateurs = new Vector<Donateur>();
 /**
     arbres est un tableau d'Arbre
-    @see Arbre
  */
     private Vector<Arbre> arbres = new Vector<Arbre>();
 /**
     arbresRemarquables est un tableau d'Arbre
     L'association met à jour la liste des arbres remarquables
-    @see Arbre
  */
     private Vector<Arbre> arbresRemarquables = new Vector<Arbre>();
 /**
     arbresVotés est un tableau d'Arbre
     L'association met à jour la liste des arbres votés
-    @see Arbre
  */
     private Vector<Arbre> arbresVotés = new Vector<Arbre>();
 /**
@@ -93,7 +86,7 @@ public class Association {
 
 /**
     Constructeur de Association
-    @param nom
+    @param nom est le nom de l'association
  */
     public Association(String nom){
         this.nom = nom;
@@ -102,7 +95,6 @@ public class Association {
 /**
     Méthode getPresident qui permet de récupérer le président de l'association
     @return president
-    @see President
  */
     public President getPresident(){
         return president;
@@ -110,8 +102,7 @@ public class Association {
 
 /**
     Méthode setPresident qui permet de modifier l'attribut president alors qu'il est en private
-    @param president
-    @see President
+    @param president est le nouveau président de l'association
  */
     public void setPresident(President president){
         this.president = president;
@@ -120,7 +111,6 @@ public class Association {
 /**
     Méthode getMembres qui permet de récupérer la liste des membres de l'association
     @return membres
-    @see Mmebre
  */
     public Vector<Membre> getMembres(){
         return membres;
@@ -128,8 +118,7 @@ public class Association {
 
 /**
     Méthode setMembres qui permet de modifier la liste des membres de l'association alors que l'attribut est en private
-    @param membres
-    @see Membre
+    @param membres est la nouvelle liste des membres de l'association
  */
     public void setMembres(Vector<Membre> membres){
         this.membres = membres;
@@ -138,7 +127,6 @@ public class Association {
 /**
     Méthode getDonateurs qui permet de récupérer la liste des donateurs de l'association
     @return donateurs
-    @see Donateur
  */
     public Vector<Donateur> getDonateurs(){
         return donateurs;
@@ -146,8 +134,7 @@ public class Association {
 
 /**
     Méthode setDonateurs qui permet de modifier la liste des donateurs de l'association alors que l'attribut est en private
-    @param donateurs
-    @see Donateur
+    @param donateurs est la nouvelle liste des donateurs de l'association
  */
     public void setDonateurs(Vector<Donateur> donateurs){
         this.donateurs = donateurs;
@@ -156,7 +143,6 @@ public class Association {
 /**
     Méthode getArbres qui permet de récupérer la liste des Arbres
     @return arbres
-    @see Arbre
  */
     public Vector<Arbre> getArbres(){
         return arbres;
@@ -164,8 +150,7 @@ public class Association {
 
 /**
     Méthode setArbres qui permet de modifier la liste des arbres de l'association alors que l'attribut est en private
-    @param arbres
-    @see Arbre
+    @param arbres est la nouvelle liste des arbres de l'association
  */
     public void setArbres(Vector<Arbre> arbres){
         this.arbres = arbres;
@@ -181,7 +166,7 @@ public class Association {
 
 /**
     Méthode setComptes qui permet de modifier l'attribut comptes alors qu'il est en private
-    @param comptes
+    @param comptes sont les nouveaux comptes de l'association
  */
     public void setComptes(double comptes){
         this.comptes = comptes;
@@ -197,7 +182,7 @@ public class Association {
 
 /**
     Méthode setFactures qui permet de modifier l'attribut factures alors qu'il est en private
-    @param factures
+    @param factures sont les nouvelles factures de l'association
  */
     public void setFactures(double factures){
         this.factures = factures;
@@ -205,7 +190,7 @@ public class Association {
 
 /**
     Méthode set_recettes qui permet de modifier l'attribut recettes alors qu'il est en private
-    @param recettes
+    @param recettes sont les nouvelles recettes de l'association
  */
     public void set_recettes(double recettes){
         this.recettes = recettes;
@@ -213,7 +198,7 @@ public class Association {
 
 /**
     Méthode get_recettes qui permet de récupérer les recettes de l'association
-    @return recettes
+    @return recettes 
  */
     public double get_recettes(){
         return recettes;
@@ -221,8 +206,8 @@ public class Association {
 
 /**
     Méthode set_depenses qui permet de modifier l'attribut depenses alors qu'il est en private
-    @param depenses
- */
+    @param depenses sont les nouvelles depenses de l'association
+ */ 
     public void set_depenses(double depenses){
         this.depenses = depenses;
     }
@@ -238,7 +223,6 @@ public class Association {
 /**
     Méthode getArbresRemarquables qui permet de récupérer la liste des Arbres remarquables
     @return arbresRemarquables
-    @see Arbre
  */
     public Vector<Arbre> getArbresRemarquables(){
         return arbresRemarquables;
@@ -246,7 +230,7 @@ public class Association {
 
 /**
     Méthode set_montantVisite qui permet de modifier l'attribut montantVisite alors qu'il est en private
-    @param montantVisite
+    @param montantVisite le budget d'une seule visite
  */
     public void set_montantVisite(double montantVisite){
         this.montantVisite = montantVisite;
@@ -270,7 +254,7 @@ public class Association {
 
 /**
     Méthode setCompteRendus qui permet de modifier la liste des comptes rendus de l'association alors que l'attribut est en private
-    @param compteRendus
+    @param compteRendus est la nouvelle liste des comptes rendus de l'association
  */
     public void setCompteRendus(Vector<String> compteRendus){
         this.compteRendus = compteRendus;
@@ -278,7 +262,7 @@ public class Association {
 
 /**
     Méthode setNombreVisites qui permet de modifier l'attribut nombreDesVisites alors qu'il est en private
-    @param nombreDesVisites
+    @param nombreDesVisites est le nombre de visites de l'association
  */
     public void setNombreVisites(int nombreDesVisites){
         this.nombreDesVisites = nombreDesVisites;
@@ -295,7 +279,6 @@ public class Association {
 /**
     Méthode getArbresVotés qui permet de récupérer la liste des Arbres votés de l'association
     @return arbresVotés
-    @see Arbre
  */
     public Vector<Arbre> getArbresVotés(){
         return arbresVotés;
@@ -303,8 +286,7 @@ public class Association {
 
 /**
     Méthode setArbresVotés qui permet de modifier la liste des arbres votés de l'association alors que l'attribut est en private
-    @param arbresVotés
-    @see Arbre
+    @param arbresVotés est la nouvelle liste des arbres votés de l'association
  */
     public void setArbresVotés(Vector<Arbre> arbresVotés){
         this.arbresVotés = arbresVotés;
@@ -313,9 +295,6 @@ public class Association {
 /**
   * Cette méthode permet de payer les factures.
   * Si les comptes sont positifs le paiement est effectué sinon un message est déclenché  
-  * @see comptes 
-  * @see factures
-
 */
     public void payerLesFactures(){
         if (comptes >= factures){
@@ -330,9 +309,8 @@ public class Association {
 
 /**
   * Cette méthode permet de proposer des visites aux membres.
-  * @see arbresRemarquebles
   * Liste d'arbres remarqueables qui est triée par ancienneté de dernière viste dans la méthode
-  * @see arbre#get_derniereVisite()
+  * @return vector des arbresRemarquables triés par ancienneté de dernière viste
 */
 
     public Vector<Arbre> proposerDesVisites(){
@@ -354,11 +332,6 @@ public class Association {
 
 /**
   * Cette méthode permet d'ajouter des arbres dans la liste.
-  * @see Arbre
-  * @see FsHandler#readFile(String)
-  * @see get_remarquable
-  * @see abresRemarquables
-  * @exception e  
   * Message bloquant
 */
 
@@ -408,15 +381,11 @@ public class Association {
 
 /**
     Méthode qui permet à l'association de demander des dons aux donateurs 
-    @param montant 
+    @param montant est le montant du don
     * montant du don demandé
-    @param nature 
-    @param nom 
+    @param nature est la nature du donateur
+    @param nom est le nom du donateur
     * nature et nom du donateur afin de le retrouver dans la liste des donateurs de l'association
-    @see donateurs 
-    @see donateur#getNature()
-    @see donateur#getNom()
-    @see recettes 
     La méthode met aussi à jour les recettes de l'association lorsque le donateur est trouvé
  */
     public void demanderDesDons( double montant, String nature, String nom){
@@ -445,9 +414,6 @@ public class Association {
     Celle-ci est basée sur les arbres votés 
     Elle trie la liste des arbres votés en foncion du nombres de votes,
     et ajoute les 5 premiers 
-    @see Arbre 
-    @see arbresVotés 
-    @see arbre#get_nombreDeVotes()
  */
     public void proposerUneListedesArbres(){
         Vector<Arbre> aProposer = new Vector<Arbre>();
@@ -470,35 +436,31 @@ public class Association {
 
 /**
     Cette méthode est un test pour la proposition des arbres votés
-    Il faut dans un premier temps ajouter un president afin qu'il puisse ajouter des membres
-    @see president#setPresident
-    Il faut ensuite jouter des memebres afin qu'ils puissent voter 
-    @see president#ajouterUnMembre
+    Il faut dans un premier temps ajouter un president afin qu'il puisse ajouter des membres#setPresident
+    Il faut ensuite jouter des memebres afin qu'ils puissent voter #ajouterUnMembre
     Il ne reste plus qu'à utiliser la méthode voterSurUnArbre de la classe Membre 
-    @see membres#voterSurUnArbre
-    @see proposerUneListedesArbres()
  */
     public void testProposerUneListedesArbres(){
         setPresident( new President("test", "test", "test", "test", "test"));
-       president.ajouterUnMembre("test1", "test1", "test1", "test1", "test1", membres);
-       president.ajouterUnMembre("test2", "test2", "test2", "test2", "test2", membres);
-       president.ajouterUnMembre("test3", "test3", "test3", "test3", "test3", membres);
-    
-        membres.get(0).voterSurUnArbre(arbres, arbresVotés, "Tilleul", "48.8575236733368,2.273512784480306");
-        membres.get(0).voterSurUnArbre(arbres, arbresVotés, "Platane", "48.847974826347695,2.391709735925394");
-        membres.get(0).voterSurUnArbre(arbres, arbresVotés, "Charme", "48.85212056146794,2.412624900479169");
-        membres.get(0).voterSurUnArbre(arbres, arbresVotés, "Sophora", "48.87009602025182,2.395182637194809");
+        president.ajouterUnMembre("test1", "test1", "test1", "test1", "test1", membres);
+        president.ajouterUnMembre("test2", "test2", "test2", "test2", "test2", membres);
+        president.ajouterUnMembre("test3", "test3", "test3", "test3", "test3", membres);
 
-        membres.get(1).voterSurUnArbre(arbres, arbresVotés, "Tilleul", "48.8575236733368,2.273512784480306");
-        membres.get(1).voterSurUnArbre(arbres, arbresVotés, "Platane", "48.847974826347695,2.391709735925394");
-        membres.get(1).voterSurUnArbre(arbres, arbresVotés, "Charme", "48.85212056146794,2.412624900479169");
-        membres.get(1).voterSurUnArbre(arbres, arbresVotés, "Sophora", "48.87009602025182,2.395182637194809");
+    	membres.get(0).voterSurUnArbre(arbres, arbresVotés, "Tilleul", "48.8575236733368,2.273512784480306");
+    	membres.get(0).voterSurUnArbre(arbres, arbresVotés, "Platane", "48.847974826347695,2.391709735925394");
+    	membres.get(0).voterSurUnArbre(arbres, arbresVotés, "Charme", "48.85212056146794,2.412624900479169");
+    	membres.get(0).voterSurUnArbre(arbres, arbresVotés, "Sophora", "48.87009602025182,2.395182637194809");
 
-        membres.get(2).voterSurUnArbre(arbres, arbresVotés, "Tilleul", "48.8575236733368,2.273512784480306");
-        membres.get(2).voterSurUnArbre(arbres, arbresVotés, "Platane", "48.847974826347695,2.391709735925394");
-        membres.get(2).voterSurUnArbre(arbres, arbresVotés, "Charme", "48.85212056146794,2.412624900479169");
-        membres.get(2).voterSurUnArbre(arbres, arbresVotés, "Sophora", "48.87009602025182,2.395182637194809");
-        proposerUneListedesArbres();
+    	membres.get(1).voterSurUnArbre(arbres, arbresVotés, "Tilleul", "48.8575236733368,2.273512784480306");
+    	membres.get(1).voterSurUnArbre(arbres, arbresVotés, "Platane", "48.847974826347695,2.391709735925394");
+    	membres.get(1).voterSurUnArbre(arbres, arbresVotés, "Charme", "48.85212056146794,2.412624900479169");
+    	membres.get(1).voterSurUnArbre(arbres, arbresVotés, "Sophora", "48.87009602025182,2.395182637194809");
+
+    	membres.get(2).voterSurUnArbre(arbres, arbresVotés, "Tilleul", "48.8575236733368,2.273512784480306");
+    	membres.get(2).voterSurUnArbre(arbres, arbresVotés, "Platane", "48.847974826347695,2.391709735925394");
+    	membres.get(2).voterSurUnArbre(arbres, arbresVotés, "Charme", "48.85212056146794,2.412624900479169");
+    	membres.get(2).voterSurUnArbre(arbres, arbresVotés, "Sophora", "48.87009602025182,2.395182637194809");
+    	proposerUneListedesArbres();
     }
 
 /**

@@ -34,12 +34,11 @@ public class Personne {
     private String email;
 /**
     Constructeur de Personne 
-    @param nom
-    @param prenom
-    @param personne 
-    @param adresse 
-    @param telephone 
-    @param email
+    @param nom est une chaîne de caractère représentant le nom de la personne.
+    @param prenom est une chaîne de caractère représentant le prenom de la personne.
+    @param adresse est une chaîne de caractère représentant l'adresse de la personne.
+    @param telephone est une chaîne de caractère représentant le numero de telephone de la personne.
+    @param email est une chaîne de caractère représentant l'adresse mail de la personne.
 
  */
     public Personne(String nom, String prenom, String adresse, String telephone, String email) {
@@ -58,7 +57,7 @@ public class Personne {
     }
 /**
     Méthode setNom qui permet de modifier l'attribut nom alors qu'il est en private
-    @param nom
+    @param nom est une chaîne de caractère représentant le nom de la personne.
  */
     public void setNom(String nom) {
         this.nom = nom;
@@ -72,7 +71,7 @@ public class Personne {
     }
 /**
     Méthode setPrenom qui permet de modifier l'attribut prenom alors qu'il est en private
-    @param prenom
+    @param prenom est une chaîne de caractère représentant le prenom de la personne.
  */
     public void setPrenom(String prenom) {
         this.prenom = prenom;
@@ -86,7 +85,7 @@ public class Personne {
     }
 /**
     Méthode setAdresse qui permet de modifier l'attribut adresse alors qu'il est en private
-    @param adresse
+    @param adresse est une chaîne de caractère représentant l'adresse de la personne.
  */
     public void setAdresse(String adresse) {
         this.adresse = adresse;
@@ -100,7 +99,7 @@ public class Personne {
     }
 /**
     Méthode setTelephone qui permet de modifier l'attribut telephone alors qu'il est en private
-    @param telephone
+    @param telephone est une chaîne de caractère représentant le numero de telephone de la personne.
  */
     public void setTelephone(String telephone) {
         this.telephone = telephone;
@@ -114,7 +113,7 @@ public class Personne {
     }
 /**
     Méthode setEmail qui permet de modifier l'attribut email alors qu'il est en private
-    @param email
+    @param email est une chaîne de caractère représentant l'adresse mail de la personne.
  */
     public void setEmail(String email) {
         this.email = email;

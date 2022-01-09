@@ -19,8 +19,8 @@ public class Donateur {
 
 /**
     Constructeur de Donateur
-    @param nom
-    @param nature
+    @param nom est une chaîne de caractère représentant le nom du donateur.
+    @param nature est une chaîne de caractère représentant la nature du donateur (Personne physique ou morale). 
  */
     public Donateur(String nature, String nom){
         this.nature = nature;
@@ -28,13 +28,9 @@ public class Donateur {
     }
 /** 
     La méthode donner permet au donateur d'effectuer un don à l'association
-    @param montant
-    *   ce qui correspond au montant du don
-    @param association
-    *   correspond à l'association qui reçoit le don
-    @see association#setComptes
+    @param montant est un entier représentant le montant du don
+    @param association est une chaîne de caractère représentant le nom de l'association qui reçoit le don
     *   permet de mettre directement à jour les comptes de l'association
-    @see association#getComptes
     *   permet de récupérer les comptes de l'association avant le don afin de les mettre à jour
      */ 
 
@@ -51,7 +47,7 @@ public class Donateur {
     }
 /**
     Méthode setNom qui permet de modifier l'attribut nom alors qu'il est en private
-    @param nom
+    @param nom est une chaîne de caractère représentant le nom du donateur.
  */
     public void setNom(String nom){
         this.nom = nom;
@@ -65,7 +61,7 @@ public class Donateur {
     }
 /**
     Méthode setNature qui permet de modifier l'attribut nature alors qu'il est en private
-    @param nature
+    @param nature est une chaîne de caractère représentant la nature du donateur.
  */
     public void setNature(String nature){
         this.nature = nature;

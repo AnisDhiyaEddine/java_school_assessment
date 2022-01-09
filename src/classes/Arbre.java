@@ -1,5 +1,4 @@
 package classes;
-
 import java.sql.Timestamp;
 
 /**
@@ -67,14 +66,14 @@ public class Arbre {
 
     /** 
      * Constructeur de Arbre
-     * @param libellefrancais 
-     * @param genre
-     * @param espece
-     * @param remarquable
-     * @param hauteurenm
-     * @param circonferenceencm
-     * @param stadedeveloppement 
-     * @param geo_point_2d
+     * @param libellefrancais une chaîne de caractère représentant le nom de l'arbre. 
+     * @param genre une chaîne de caractère représentant le genre de l'arbre. 
+     * @param espece une chaîne de caractère représentant l'espece de l'arbre. 
+     * @param remarquable une chaîne de caractère indiquant si l'arbre est remarquable.
+     * @param hauteurenm une chaîne de caractère représentant la hauteur en m de l'arbre.
+     * @param circonferenceencm une chaîne de caractère représentant la circonference en cm de l'arbre.
+     * @param stadedeveloppement une chaîne de caractère représentant le stade de developpement l'arbre.
+     * @param geo_point_2d une chaîne de caractère représentant la postition de l'arbre.
      */ 
 
     public Arbre(
@@ -163,14 +162,14 @@ public class Arbre {
     }
 /**
     Méthode qui permet de modifier l'attribut derniereVsite alors qu'il est en private
-    @param derniereVisite
+    @param derniereVisite un time stamp représentant la dernière visite de l'arbre(hérite de la classe java.util.Date pour encapsuler des données ). 
  */
     public void set_derniereVisite(Timestamp derniereVisite){
         this.derniereVisite = derniereVisite;
     }
 /**
     Méthode qui permet de modifier l'attribut visite_programmee alors qu'il est en private
-    @param visite_programmée
+    @param visite_programmée un boolean indiquant si une visite a été programmé  pour l'arbre.
  */
 
     public void set_visite_programmée(boolean visite_programmée){
@@ -193,7 +192,7 @@ public class Arbre {
     }
 /**
     Méthode qui permet de modifier l'attribut nombreDeVotes alors qu'il est en private
-    @param nombreDevotes
+    @param nombreDeVotes un entier représentant le nombre de vote de l'arbre.
  */
     public void set_nombreDeVotes(int nombreDeVotes){
         this.nombreDeVotes = nombreDeVotes;
@@ -202,7 +201,7 @@ public class Arbre {
 /**
     Redéfinition de la méthode to String
     @return une chaine de caractère
-    * qui correspond à toutes les informations d'un arbre (tous les attributs de la classe Arbre)
+    *qui correspond à toutes les informations d'un arbre (tous les attributs de la classe Arbre)
  */
     @Override
     public String toString() {

@@ -5,7 +5,6 @@ import utiles.*;
 
 /**
     President classe fille de la classe Personne
-    @see Personne
  */
 public class President extends Personne {
 
@@ -19,8 +18,6 @@ public class President extends Personne {
   * @param nature  la nature du donateur, de type String.
   * @param nom  le nom du donateur, de type String.
   * @param donateurs  le vector qui contient la liste des donateurs.
-  * @see Donateur
-  * @see Association#donateurs
   */
 
     public void ajouterUnDonateur(String nature, String nom, Vector<Donateur> donateurs) {
@@ -33,10 +30,9 @@ public class President extends Personne {
   * @param nom  le nom du membre, de type String.
   * @param prenom  le prenom du membre, de type String.
   * @param adresse  l'adresse du membre, de type String.
+* @param telephone  le numéro de téléphone du membre, de type String.
   * @param membres  le vector qui contient la liste des membres.
   * @param email  l'email du membre, de type String.
-  * @see Membre
-  * @see Association#membres
   */
 
     public void ajouterUnMembre(String nom, String prenom, String adresse, String telephone, String email, Vector<Membre> membres) {
@@ -49,11 +45,7 @@ public class President extends Personne {
   * L'utilisateur indique le nom et le prénom, puis il est radié d'une liste des membres. 
   * @param nom  le nom du membre, de type String.
   * @param prenom  le prenom du membre, de type String.
-  * @see getNom
-  * @see getPrenom
-  * @see getCotisation
-  * @see Membre
-  * @see Association#membres
+  * @param membres  le vector qui contient la liste des membres.
 */
 
     public void radierUnMembre(String nom, String prenom, Vector<Membre> membres){
@@ -71,9 +63,7 @@ public class President extends Personne {
   * L'utilisateur indique le nom et la nature du donateur, puis il est supprimé d'une liste des donateurs. 
   * @param nature  la nature du donateur, de type String.
   * @param nom  le nom du donateur, de type String.
-  * @see getNature
-  * @see Donateur
-  * @see Association#donateurs
+  * @param donateurs  le vector qui contient la liste des donateurs.
 */
 
     public void supprimerUnDonateur(String nature, String nom, Vector<Donateur> donateurs){
@@ -89,11 +79,6 @@ public class President extends Personne {
 /**
   * Cette méthode ajoute une nouvelle facture. 
   * @param association  l'association, de type association.
-  * @see Association
-  * @see Association#getFactures()
-  * @see Association#setFactures(double) 
-  * @see IOHandler#lireClavier()
-
 */
     public void nouvelleFacture(Association association){
         double montant = Double.parseDouble(IOHandler.lireClavier("Entrez le montant de la facture"));
