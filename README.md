@@ -1,4 +1,12 @@
-## Recommandations:
+# Recommandations:
+
+## Vous pouvez cloner le projet sur [GitHub](https://github.com/AnisDhiyaEddine/java_school_assessment.git)
+
+### Pensez à lancer le projet dans une VM configurée pour le développement JAVA.
+
+### Pensez à lancer le projet dans un terminal qui supporte la commande sh: zsh, Bash , Powershell, etc.
+
+---
 
 Pour lancer le projet, il suffit de lancer le script `run.sh` avec la command.
 
@@ -25,7 +33,15 @@ Les dépendances sont dans le dossier `assets` généré par le script `run.sh`,
 
 ---
 
-## Guidelines:
+# Guidelines:
+
+## Think about cloning the project from [GitHub](https://github.com/AnisDhiyaEddine/java_school_assessment.git)
+
+### Think about cloning the project in a VM configured for the development of JAVA.
+
+### Think about using a shell that supports the command sh.
+
+---
 
 To execute the project, you need to run the script `run.sh` with the command.
 
