@@ -2,134 +2,321 @@ package classes;
 
 import java.sql.Timestamp;  
 import java.text.*;
-
-
-
 import java.util.*;
 import utiles.*;
 
+/**
+    Cette classe est caractérisée par les attributs suivants :
+    nom 
+    president 
+    membres 
+    donateurs 
+    arbres 
+    arbresRemarquables
+    arbresVotés
+    compteRendus
+    comptes
+    montantVisite
+    factures 
+    depenses 
+    recettes
+    nombreDesVisites
+
+ */
 public class Association {
+
+/** 
+    nom est une chaîne de caractère représentant le nom de l'association. 
+ */ 
     private String nom;
+/** 
+    President un attribut qui désigne le président de l'association et qui renvoie donc à la classe President
+    @see President 
+ */ 
     private President president;
+/**
+    membres est un tableau des membres de l'association
+    @see Membre
+ */
     private Vector<Membre> membres = new Vector<Membre>();
+/**
+    donateurs est un tableau des donateurs de l'association
+    @see Donateur
+ */
     private Vector<Donateur> donateurs = new Vector<Donateur>();
+/**
+    arbres est un tableau d'Arbre
+    @see Arbre
+ */
     private Vector<Arbre> arbres = new Vector<Arbre>();
+/**
+    arbresRemarquables est un tableau d'Arbre
+    L'association met à jour la liste des arbres remarquables
+    @see Arbre
+ */
     private Vector<Arbre> arbresRemarquables = new Vector<Arbre>();
+/**
+    arbresVotés est un tableau d'Arbre
+    L'association met à jour la liste des arbres votés
+    @see Arbre
+ */
     private Vector<Arbre> arbresVotés = new Vector<Arbre>();
+/**
+    compteRendus est un tableau de String 
+    qui correspond aux comptes rendus des visites
+ */
     private Vector <String> compteRendus = new Vector<String>();
+/**
+    comptes est un double qui correspond aux comptes de l'association
+ */
     private double comptes;
+/**
+    montantVisite est un double qui correspond au montant des visites fixé par l'association; ici 100
+ */
     private double montantVisite = 100;
+/**
+    factures est un double qui correspond au montant des factures de l'association
+ */
     private double factures = 0;
+/**
+    recettes est un double qui correspond au montant des recettes de l'association
+ */
     private double recettes = 0;
+/**
+    depenses est un double qui correspond au montant des depenses de l'association
+ */
     private double depenses = 0;
+/**
+    nombredeVisites est un entier qui correspond aux nombres de visites effectuées par les membres de l'association
+ */
     private int nombreDesVisites = 0;
 
-
+/**
+    Constructeur de Association
+    @param nom
+ */
     public Association(String nom){
         this.nom = nom;
     }
 
+/**
+    Méthode getPresident qui permet de récupérer le président de l'association
+    @return president
+    @see President
+ */
     public President getPresident(){
         return president;
     }
 
+/**
+    Méthode setPresident qui permet de modifier l'attribut president alors qu'il est en private
+    @param president
+    @see President
+ */
     public void setPresident(President president){
         this.president = president;
     }
 
+/**
+    Méthode getMembres qui permet de récupérer la liste des membres de l'association
+    @return membres
+    @see Mmebre
+ */
     public Vector<Membre> getMembres(){
         return membres;
     }
 
+/**
+    Méthode setMembres qui permet de modifier la liste des membres de l'association alors que l'attribut est en private
+    @param membres
+    @see Membre
+ */
     public void setMembres(Vector<Membre> membres){
         this.membres = membres;
     }
 
+/**
+    Méthode getDonateurs qui permet de récupérer la liste des donateurs de l'association
+    @return donateurs
+    @see Donateur
+ */
     public Vector<Donateur> getDonateurs(){
         return donateurs;
     }
 
+/**
+    Méthode setDonateurs qui permet de modifier la liste des donateurs de l'association alors que l'attribut est en private
+    @param donateurs
+    @see Donateur
+ */
     public void setDonateurs(Vector<Donateur> donateurs){
         this.donateurs = donateurs;
     }
 
+/**
+    Méthode getArbres qui permet de récupérer la liste des Arbres
+    @return arbres
+    @see Arbre
+ */
     public Vector<Arbre> getArbres(){
         return arbres;
     }
 
+/**
+    Méthode setArbres qui permet de modifier la liste des arbres de l'association alors que l'attribut est en private
+    @param arbres
+    @see Arbre
+ */
     public void setArbres(Vector<Arbre> arbres){
         this.arbres = arbres;
     }
 
+/**
+    Méthode getComptes qui permet de récupérer les comptes de l'association
+    @return comptes
+ */
     public double getComptes(){
         return comptes;
     }
 
+/**
+    Méthode setComptes qui permet de modifier l'attribut comptes alors qu'il est en private
+    @param comptes
+ */
     public void setComptes(double comptes){
         this.comptes = comptes;
     }
 
+/**
+    Méthode getFactures qui permet de récupérer les factures de l'association
+    @return factures
+ */
     public double getFactures(){
         return factures;
     }
 
+/**
+    Méthode setFactures qui permet de modifier l'attribut factures alors qu'il est en private
+    @param factures
+ */
     public void setFactures(double factures){
         this.factures = factures;
     }
 
+/**
+    Méthode set_recettes qui permet de modifier l'attribut recettes alors qu'il est en private
+    @param recettes
+ */
     public void set_recettes(double recettes){
         this.recettes = recettes;
     }
 
+/**
+    Méthode get_recettes qui permet de récupérer les recettes de l'association
+    @return recettes
+ */
     public double get_recettes(){
         return recettes;
     }
 
+/**
+    Méthode set_depenses qui permet de modifier l'attribut depenses alors qu'il est en private
+    @param depenses
+ */
     public void set_depenses(double depenses){
         this.depenses = depenses;
     }
 
+/**
+    Méthode get_depenses qui permet de récupérer les depenses de l'association
+    @return depenses
+ */
     public double get_depenses(){
         return depenses;
     }
 
+/**
+    Méthode getArbresRemarquables qui permet de récupérer la liste des Arbres remarquables
+    @return arbresRemarquables
+    @see Arbre
+ */
     public Vector<Arbre> getArbresRemarquables(){
         return arbresRemarquables;
     }
 
+/**
+    Méthode set_montantVisite qui permet de modifier l'attribut montantVisite alors qu'il est en private
+    @param montantVisite
+ */
     public void set_montantVisite(double montantVisite){
         this.montantVisite = montantVisite;
     }
 
+/**
+    Méthode get_montantVisite qui permet de récupérer le montant des visites de l'association
+    @return montantVisite
+ */
     public double get_montantVisite(){
         return montantVisite;
     }
 
+/**
+    Méthode getCompteRendus qui permet de récupérer la liste des comptes rendus de l'association
+    @return compteRendus
+ */
     public Vector<String> getComptesRendus(){
         return compteRendus;
     }
 
+/**
+    Méthode setCompteRendus qui permet de modifier la liste des comptes rendus de l'association alors que l'attribut est en private
+    @param compteRendus
+ */
     public void setCompteRendus(Vector<String> compteRendus){
         this.compteRendus = compteRendus;
     }
 
+/**
+    Méthode setNombreVisites qui permet de modifier l'attribut nombreDesVisites alors qu'il est en private
+    @param nombreDesVisites
+ */
     public void setNombreVisites(int nombreDesVisites){
         this.nombreDesVisites = nombreDesVisites;
     }
 
+/**
+    Méthode getNombreVisites qui permet de récupérer le nombre de visites de l'association
+    @return nombreDesVisites
+ */
     public int getNombreVisites(){
         return nombreDesVisites;
     }
 
+/**
+    Méthode getArbresVotés qui permet de récupérer la liste des Arbres votés de l'association
+    @return arbresVotés
+    @see Arbre
+ */
     public Vector<Arbre> getArbresVotés(){
         return arbresVotés;
     }
 
+/**
+    Méthode setArbresVotés qui permet de modifier la liste des arbres votés de l'association alors que l'attribut est en private
+    @param arbresVotés
+    @see Arbre
+ */
     public void setArbresVotés(Vector<Arbre> arbresVotés){
         this.arbresVotés = arbresVotés;
     }
 
+/**
+  * Cette méthode permet de payer les factures.
+  * Si les comptes sont positifs le paiement est effectué sinon un message est déclenché  
+  * @see comptes 
+  * @see factures
 
+*/
     public void payerLesFactures(){
         if (comptes >= factures){
             comptes -= factures;
@@ -141,7 +328,13 @@ public class Association {
         }
     }
 
-    // Proposer des visites aux membres	
+/**
+  * Cette méthode permet de proposer des visites aux membres.
+  * @see arbresRemarquebles
+  * Liste d'arbres remarqueables qui est triée par ancienneté de dernière viste dans la méthode
+  * @see arbre#get_derniereVisite()
+*/
+
     public Vector<Arbre> proposerDesVisites(){
         Collections.sort(arbresRemarquables, new Comparator<Arbre>() {
             @Override
@@ -159,7 +352,15 @@ public class Association {
         return arbresRemarquables;
     }
 
-
+/**
+  * Cette méthode permet d'ajouter des arbres dans la liste.
+  * @see Arbre
+  * @see FsHandler#readFile(String)
+  * @see get_remarquable
+  * @see abresRemarquables
+  * @exception e  
+  * Message bloquant
+*/
 
     public void remplirLesArbres(){
         String liste = FsHandler.readFile("assets/arbres.csv");
@@ -183,7 +384,17 @@ public class Association {
         }
     }	
 
-
+/**
+    Méthode qui permet de générer un rapport qui contient les informations suivantes : 
+    nom de l'association
+    recettes 
+    depenses
+    comptes 
+    montant des visites 
+    nombre de visites
+    @return String 
+    * contenant toutes ces informations
+ */
 
     public String genererUnRapport(){
         String rapport = "\n Rapport de l'association " + this.nom + 
@@ -195,6 +406,19 @@ public class Association {
         return rapport;
     }
 
+/**
+    Méthode qui permet à l'association de demander des dons aux donateurs 
+    @param montant 
+    * montant du don demandé
+    @param nature 
+    @param nom 
+    * nature et nom du donateur afin de le retrouver dans la liste des donateurs de l'association
+    @see donateurs 
+    @see donateur#getNature()
+    @see donateur#getNom()
+    @see recettes 
+    La méthode met aussi à jour les recettes de l'association lorsque le donateur est trouvé
+ */
     public void demanderDesDons( double montant, String nature, String nom){
 
         if(nature == "" && nom == "") {
@@ -216,6 +440,15 @@ public class Association {
         }
     }
 
+/**
+    La méthode permet à l'association de proposer une liste d'arbres
+    Celle-ci est basée sur les arbres votés 
+    Elle trie la liste des arbres votés en foncion du nombres de votes,
+    et ajoute les 5 premiers 
+    @see Arbre 
+    @see arbresVotés 
+    @see arbre#get_nombreDeVotes()
+ */
     public void proposerUneListedesArbres(){
         Vector<Arbre> aProposer = new Vector<Arbre>();
         Collections.sort(arbresVotés, new Comparator<Arbre>() {
@@ -235,6 +468,16 @@ public class Association {
         }
     }
 
+/**
+    Cette méthode est un test pour la proposition des arbres votés
+    Il faut dans un premier temps ajouter un president afin qu'il puisse ajouter des membres
+    @see president#setPresident
+    Il faut ensuite jouter des memebres afin qu'ils puissent voter 
+    @see president#ajouterUnMembre
+    Il ne reste plus qu'à utiliser la méthode voterSurUnArbre de la classe Membre 
+    @see membres#voterSurUnArbre
+    @see proposerUneListedesArbres()
+ */
     public void testProposerUneListedesArbres(){
         setPresident( new President("test", "test", "test", "test", "test"));
        president.ajouterUnMembre("test1", "test1", "test1", "test1", "test1", membres);
@@ -258,6 +501,11 @@ public class Association {
         proposerUneListedesArbres();
     }
 
+/**
+    Redéfinition de la méthode toString 
+    @return String
+    * qui correspond à toutes les informations de l'association (tous les attributs de la classe Association)
+ */
     @Override
     public String toString() {
         return "Association{" +
